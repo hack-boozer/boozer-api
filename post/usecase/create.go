@@ -9,8 +9,8 @@ func (p *postUsecase) Create(param *post.Create) (*post.Post, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, p := range photoReq {
-		_, err = p.photoRepo.Create(p)
+	for _, ph := range photoReq {
+		_, err = p.photoRepo.Create(ph)
 		if err != nil {
 			return nil, err
 		}
