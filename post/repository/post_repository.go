@@ -40,12 +40,14 @@ func (m *postRepository) GetByAccountID(accountID uuid.UUID) (*model.Post, error
 func (m *postRepository) List() ([]*post.Media, error) {
 	rows, err := m.Conn.Table("posts").
 		Select(`
+			ac.id,
 			ac.nick_name,
+			ac.email,
 			ac.photo,
 			posts.comment,
 			posts.rate,
 			ph.file,
-			posts.updated_at,
+			posts.updated_at
 		`).
 		Joins("LEFT JOIN accounts ac on ac.id = posts.account_id").
 		Joins("LEFT JOIN photos ph on posts.id = ph.post_id").
@@ -65,6 +67,7 @@ func ListPosts(rows *sql.Rows) []*post.Media {
 	for rows.Next() {
 		var p = post.Media{}
 		rows.Scan(
+			&p.User.ID,
 			&p.User.NickName,
 			&p.User.Photo,
 			&p.Comment,
