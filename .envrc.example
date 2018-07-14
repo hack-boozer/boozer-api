@@ -1,2 +1,7 @@
 export PORT=8080
 
+# DB関連
+export DATABASE_URL=postgres://ogura:@localhost:5432/boozer-api
+export SSL_MODE="?sslmode=disable"
+export DB_LOGMODE=false
+
