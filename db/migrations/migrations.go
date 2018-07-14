@@ -3,6 +3,8 @@ package migrations
 import (
 	"github.com/hack-boozer/boozer-api/account"
 	"github.com/hack-boozer/boozer-api/db"
+	"github.com/hack-boozer/boozer-api/photo"
+	"github.com/hack-boozer/boozer-api/post"
 	"github.com/jinzhu/gorm"
 )
 
@@ -17,6 +19,8 @@ func Execute() {
 func Migrate(odb *gorm.DB) {
 	odb.AutoMigrate(
 		&account.Account{},
+		&post.Post{},
+		&photo.Photo{},
 	)
 }
 
@@ -24,5 +28,7 @@ func Migrate(odb *gorm.DB) {
 func DropTable(odb *gorm.DB) {
 	odb.DropTableIfExists(
 		&account.Account{},
+		&post.Post{},
+		&photo.Photo{},
 	)
 }
