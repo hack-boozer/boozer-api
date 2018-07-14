@@ -17,6 +17,6 @@ func NewHelloController(e *echo.Echo) {
 }
 
 // Hello hello world
-func Hello(ctx echo.Context) error {
+func (c *HelloController) Hello(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, "Hello, World!")
 }
