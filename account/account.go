@@ -9,6 +9,7 @@ import (
 // Account account
 type Account struct {
 	ID        uuid.UUID  `form:"id" json:"id" xml:"id" gorm:"primary_key" sql:"type:uuid" name:"ID"`
+	NickName  string     `form:"nickName" json:"nickName" gorm:"unique" name:"ニックネーム"`
 	Email     string     `form:"email" json:"email" xml:"email" gorm:"unique" name:"メールアドレス"`
 	Password  string     `form:"password" json:"password" xml:"password" name:"パスワード"`
 	Photo     string     `form:"photo" json:"photo" xml:"photo" name:"写真"`
