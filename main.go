@@ -16,6 +16,6 @@ func main() {
 	hello.NewHelloController(e)
 
 	fmt.Println("vim-go")
-	port := os.Getenv("PORT")
+	port := ":" + os.Getenv("PORT")
 	e.Logger.Fatal(e.Start(port))
 }

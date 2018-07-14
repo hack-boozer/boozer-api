@@ -1,11 +1,14 @@
 package main
 
 import (
-	"git.si-media.biz/hack-boozer/boozer-api/db/migrations"
 	"github.com/hack-boozer/boozer-api/db"
+	"github.com/hack-boozer/boozer-api/db/migrations"
+	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
+
+var database *gorm.DB
 
 func setup(e *echo.Echo) {
 	// DB接続

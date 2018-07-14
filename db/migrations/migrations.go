@@ -1,8 +1,8 @@
 package migrations
 
 import (
-	"github.com/go-examples/gorm/db"
 	"github.com/hack-boozer/boozer-api/account"
+	"github.com/hack-boozer/boozer-api/db"
 	"github.com/jinzhu/gorm"
 )
 
