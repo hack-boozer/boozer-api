@@ -2,7 +2,6 @@ package usecase
 
 import (
 	"database/sql"
-	"time"
 
 	"github.com/hack-boozer/boozer-api/photo"
 	photoRepo "github.com/hack-boozer/boozer-api/photo/repository"
@@ -17,10 +16,10 @@ type postUsecase struct {
 }
 
 // NewPostUsecase mount post usecase
-func NewPostUsecase(post postRepo.PostRepository, photo photoRepo.PhotoRepository) PostUsecase {
+func NewPostUsecase(postRepo postRepo.PostRepository, photoRepo photoRepo.PhotoRepository) PostUsecase {
 	return &postUsecase{
-		postRepo:  post,
-		photoRepo: photo,
+		postRepo:  postRepo,
+		photoRepo: photoRepo,
 	}
 }
 
@@ -36,7 +35,7 @@ func formatPostPayload(param *post.Create) (*post.Post, []*photo.Photo) {
 		AccountID: param.AccountID,
 		Comment:   param.Comment,
 		Rate:      sql.NullFloat64{Float64: param.Rate, Valid: true},
-		UpdatedAt: time.Now(),
+		UpdatedBy: param.AccountID,
 	}
 	photoReq := []*photo.Photo{}
 	for _, p := range param.Photos {

@@ -7,5 +7,5 @@ type Create struct {
 	AccountID uuid.UUID `json:"accountId"`
 	Comment   string    `json:"comment"`
 	Photos    []string  `json:"photos"`
-	Rate      float64   `json:"rate"`
+	Rate      float64   `json:"rating"`
 }
