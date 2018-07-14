@@ -26,6 +26,7 @@ func NewPostUsecase(postRepo postRepo.PostRepository, photoRepo photoRepo.PhotoR
 // PostUsecase post usecase interface
 type PostUsecase interface {
 	Create(param *post.Create) (*post.Post, error)
+	List() ([]*post.Media, error)
 }
 
 func formatPostPayload(param *post.Create) (*post.Post, []*photo.Photo) {
